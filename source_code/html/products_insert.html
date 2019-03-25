@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SmartFridge - Products: Insert</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script src="js/products_insert.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/products_insert.css" />
+</head>
+
+<body style="margin:0">
+
+    <table class="col-xs-12 col-sm-12" id="headerTable">
+        <tr style="height: 10vh">
+            <td onclick="location.href= 'index.html'" class="col-xs-2" style="border-right: 2px black solid; text-align: center; background-color: #01303f; color: white; cursor:pointer">
+                <i class="fas fa-home fa-lg"></i>
+                <p style="font-size: 2.5vh;">
+                    <b>HOME</b>
+                </p>
+            </td>
+            <td style="text-align: center;  background-color: #02577a; color: white">
+                <p style="font-size: 3vh;">
+                    <b>PRODUCTS</b>
+                </p>
+            </td>
+            <td style="text-align: center; background-color:#02577a; color: white; ; height: 3vh"><button title="Help" name="Help" type="button"  class="btn btn-primary btn-xs" style="margin-bottom: 0.80vh; background-color:#02577a; border-color:#02577a " data-toggle="modal" data-target="#helpModal"><i class="fa fa-question-circle" style="font-size: 3.5vh"></i></button></td>
+        </tr>
+        <tr>
+            <td style="text-align: center; background-color:  #037cb0; color: white">
+                <i onclick="location.href = 'products.html'" class="fas fa-arrow-alt-circle-left fa-2x" style="cursor:pointer"></i>
+            </td>
+            <td style="text-align: center; background-color:  #037cb0; color: white">
+                <p style="font-size: 3vh;">
+                    <b>INSERT</b>
+                </p>
+            </td>
+            <td style="text-align: center; background-color:  #037cb0; color: white">
+             </td>
+        </tr>
+    </table>
+
+    <!-- Table cotaining the header -->
+    <table id="productsTable" class="table table-striped  table-nowrap tableFixed" style="margin-bottom: 0px">
+        <thead id="productsTableHeader">
+            <th style="text-align:center; width:32.5%"> Product</th>
+            <th style="text-align:center; width:32.5%"> Quantity</th>
+            <th style="text-align:center; width:17.5%"> Edit</th>
+            <th style="text-align:center; width:17.5%"> Rem.</th>
+        </thead>
+        <tbody id="TextBoxContainer" style="height:60vh; overflow-y:auto;  ">
+        </tbody>
+    </table>
+
+    <!--Insert Manually-->
+    <div id="insertBarCodeDiv" style="height: 10vh;">
+        <div id="insertBarCodeButton" class="col-xs-12" style="margin-bottom: 5vh; margin-top: 5vh"> <!--1.75-->
+            <button type="button" class="btn btn-primary col-xs-offset-3 col-xs-6" data-dismiss="modal" style="text-align:center; height: 5vh" onclick="    $('#inputBarCode').modal('show');">Insert Product</button>
+        </div>
+
+        <div id="cancelButton" class="form-group col-xs-6" style="margin-bottom: 1.5vh; height: 5vh; display: none">
+            <button type="button" class="btn btn-danger col-xs-offset-2 col-xs-8" data-dismiss="modal" style="text-align:center" onclick="location.href = 'products.html'">Exit</button>
+        </div>
+        <div id="confirmButton" class="form-group col-xs-6" style="margin-bottom: 1.5vh; height: 5vh; display: none">
+            <button id="btnConfirm" data-dismiss="modal" type="reset" class="btn btn-primary col-xs-offset-2 col-xs-8" style="text-align:center" data-original-title="Confirm" onclick="updateData(); location.href = 'products.html'">Confirm</button>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="editModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="text-align: center;">
+                    <h4 class="modal-title">Product</h4>
+                </div>
+                <form>
+                    <div class="modal-body row ">
+
+                        <div class="form-group col-xs-6">
+                            <label for="new_product_name">Product:</label>
+                            <input type="text" class="form-control" id="new_product_name">
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                            <label for="new_quantity">Quantity:</label>
+                            <input type="text" class="form-control" id="new_quantity">
+                        </div>
+
+                        <div class="form-group col-xs-10">
+                            <label for="new_expDate">Expiration Date:</label>
+                            <input type="text" class="form-control" name="expDate" id="new_expDate" />
+                        </div>
+
+                        <div class="form-group col-xs-12">
+                            <label for="new_comments">Comments:</label>
+                            <textarea class="form-control" id="new_comments" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group col-xs-6">
+                            <button type="button" class="btn btn-danger col-xs-offset-2 col-xs-8" data-dismiss="modal" style="text-align:center" >Cancel</button>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <button id="btnConfirm" data-dismiss="modal" type="reset" class="btn btn-primary col-xs-offset-2 col-xs-8" style="text-align:center" data-original-title="Confirm" onclick="updateTableAndDict($(this).closest('tr'))">Confirm</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="addModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="text-align: center;">
+                    <h4 class="modal-title">Product</h4>
+                </div>
+                <form>
+                    <div class="modal-body row ">
+
+                        <div class="form-group col-xs-6">
+                            <label for="new_product_name_add">Product:</label>
+                            <input type="text" class="form-control" id="new_product_name_add">
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                            <label for="new_quantity_add">Quantity:</label>
+                            <input type="text" class="form-control" id="new_quantity_add">
+                        </div>
+
+                        <div class="form-group col-xs-10">
+                            <label for="new_expDate_add">Expiration Date:</label>
+                            <input type="text" class="form-control" name="expDate" id="new_expDate_add" />
+                        </div>
+
+                        <div class="form-group col-xs-12">
+                            <label for="new_comments_add">Comments:</label>
+                            <textarea class="form-control" id="new_comments_add" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group col-xs-6">
+                            <button type="button" class="btn btn-danger col-xs-offset-2 col-xs-8" data-dismiss="modal" style="text-align:center">Cancel</button>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <button id="btnConfirm" data-dismiss="modal" type="reset" class="btn btn-primary col-xs-offset-2 col-xs-8" style="text-align:center" data-original-title="Confirm" onclick="addTableAndDict(); revealButtons()">Confirm</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="modal fade" id="inputBarCode" role="dialog" style="margin-top: 25vh">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="text-align: center;">
+                    <h4 class="modal-title">Bar Code Reader</h4>
+                </div>
+                <form>
+                    <div class="modal-body row ">
+                        <div class="form-group col-xs-12">
+                            <label for="new_bar_code">Bar code:</label>
+                            <input type="number" class="form-control" id="new_bar_code" placeholder="Product's Bar Code">
+                            <span style="background-color:  #ffc2b3; display: none" id="barCodeError" >&#9888;The product doesn't exist in the catalog!</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group col-xs-6">
+                            <button type="button" class="btn btn-danger col-xs-offset-2 col-xs-8" data-dismiss="modal" style="text-align:center">Cancel</button>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <button id="btnInsert" onclick="insert()" type="reset" class="btn btn-primary col-xs-offset-2 col-xs-8 insert" style="text-align:center" data-original-title="Insert">Insert</button>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <button id="btnInsertManually" onclick="insertManuallyButton()" type="reset" class="btn col-xs-offset-2 col-xs-8 insert" style="text-align:center; background-color:   #666666; color:white" data-original-title="Insert">Insert Manually</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="helpModal" class="modal fade helpModal" role="dialog" style="height:80vh; ">
+        <div class="modal-dialog">
+
+            <div class="modal-content" style="height:75vh">
+
+                <div class="modal-body">
+                    <div style="overflow-y: scroll; word-wrap: break-word; height: 60vh; border:solid; border-color:#D0D0D0; padding:3vh; border-radius: 1vh; text-align: center">
+                        <center><span><h3><b>What can you do in this section?</b></h3></span></center>
+
+                        <br>
+                        <p style="color:#001f4d"><b>Insert Products Using Bar Codes</b></p>
+                        <p style="font-size: 1.9vh; text-align: justify">Pass the product's bar code on the bar code reader to insert it in the fridge. If you pass it several times, you will be increasing its quantity. Some products might not exist in the bar code catalog.</p>
+
+                        <br>
+                        <p style="color:#001f4d"><b>Insert Products Manually</b></p>
+                        <p style="font-size: 1.9vh ; text-align: justify">If you a product that doens't have a bar code, you can insert it manually. Just write the name and the quantity of the product and you are set to go.</p>
+                        
+                        <br>
+                        <p style="color:#001f4d"><b>Edit Products</b></p>
+                        <p style="font-size: 1.9vh ; text-align: justify">It's possible to edit the expiration date of a product and add some comments regarding it.</p>
+
+                    </div>
+                </div>
+                <div style="padding-top: 1vh; height: 2vh;">
+                    <button type="button" onclick="buttonsEnabled()" class="col-xs-offset-5 col-xs-2 btn btn-danger" data-dismiss="modal">Exit</button>
+                </div>
+                <br />
+                <br />
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

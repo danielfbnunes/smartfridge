@@ -1,0 +1,42 @@
+html, body {
+	height:100%;
+	overflow: hidden;
+	background-color: white; 
+}
+
+
+.carousel-control.left, .carousel-control.right {
+	background-image: none
+}
+
+
+  .menuItem {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
+	text-align: center;
+	}
+
+	.headerLocked{
+		min-height: 30vh
+	}
+
+	.warningsLocked{
+		background-color:  #e6f7ff;
+		min-height: 20vh;
+		margin-top: 7.5vh;
+	}
+
+	.notesLocked{
+		background-color:  #e6f7ff;
+		min-height: 20vh;
+		margin-top: 7.5vh;
+	}
+	.carousel-control.left, .carousel-control.right {
+	   background-image:none !important;
+	   filter:none !important;
+	}
+
+	.btn-blue, .btn-blue:hover, .btn-blue:active, .btn-blue:visited {
+    background-color: #267326 !important;
+            color: white;

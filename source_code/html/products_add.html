@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+
+<head>
+    <title>SmartFridge - Products: Add</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+</head>
+
+<body style="height: 100%; overflow-x: hidden" >
+    
+    <div>
+        <table style="width: 100%;">
+            <tr style="height: 10vh">
+                <td onclick="location.href= 'index.html'" class="col-xs-2" style="cursor:pointer; border-right: 2px black solid; text-align: center; background-color: rgb(193, 255, 49)">
+                    <i class="fas fa-home fa-lg"></i>
+                    <p style="font-size: 2.5vh;">
+                        <b>HOME</b>
+                    </p>
+                </td>
+                <td style="text-align: center; background-color: rgb(215, 253, 125)">
+                    <p style="font-size: 3vh;">
+                        <b>PRODUCTS</b>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center; background-color:  rgb(135, 204, 121)">
+                    <i onclick="location.href = 'products.html'" class="fas fa-arrow-alt-circle-left fa-2x" style="cursor:pointer"></i>
+                </td>
+                <td style="text-align: center; background-color: rgb(135, 204, 121)">
+                    <p style="font-size: 3vh;">
+                        <b>ADD</b>
+                    </p>
+                </td>
+            </tr>
+            <tr valign="top" style="height: 80vh; display: none">
+                <td colspan="2">
+                    <div class="table table-responsive">
+                        <table id="myTable" class="table table-responsive table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <td class="col-xs-4">Product Name</td>
+                                    <td class="col-xs-2">Quantity</td>
+                                    <td class="col-xs-3">Edit</td>
+                                    <td>Remove</td>
+                                </tr>
+                            </thead>
+                            <tbody id="TextBoxContainer">
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div style="text-align: center" class="modal-header">
+                    <h4 class="modal-title">Edit Product</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label class="col-xs-4" style="text-align: right;" for="product_name">Product: </label>
+                        <input class="col-xs-6" type="text" id="product_name" />
+                        
+                        <label class="col-xs-4" style="text-align: right;" for="quantity">Quantity: </label>
+                        <input class="col-xs-6" type="input" id="quantity" />
+                        
+                        <label class="col-xs-4" style="text-align: right;" for="text">Comment: </label>
+                        <textarea class="form-control" id="text" rows="3"></textarea>
+                        <br>
+                        <br>
+                        <br>
+                        <div>
+                            <button id="btnConfirm" data-dismiss="modal" type="reset" class="col-xs-offset-2 col-xs-3 btn btn-primary" data-original-title="Confirm">Confirm</button>
+                            <button type="button" class="col-xs-offset-2 col-xs-3 btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

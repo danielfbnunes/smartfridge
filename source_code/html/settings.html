@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+
+<head>
+    <title>SmartFridge - Settings</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+        crossorigin="anonymous">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"
+    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script src="js/settings.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/settings.css" />
+
+
+</head>
+
+<body onload="getDate()">
+    <div id="header">
+        <table class="col-xs-12 col-sm-12">
+            <tr style="height: 10vh">
+                <td onclick="location.href= 'index.html'" class="col-xs-2" style="border-right: 2px black solid; text-align: center; background-color: #01303f; color: white; cursor:pointer">
+                    <i class="fas fa-home fa-lg"></i>
+                    <p style="font-size: 2.5vh;">
+                        <b>HOME</b>
+                    </p>
+                </td>
+                <td style="text-align: center;  background-color: #02577a; color: white">
+                    <p style="font-size: 3vh;">
+                        <b>SETTINGS</b>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="height: 90vh; width: 100%">
+        <div class="row">
+            <div class="col-xs-offset-1 col-xs-3" style="padding-top: 12vh">
+                <h5>Brigthness</h5>
+            </div>
+            <div class="col-xs-offset-1 col-xs-6" style="text-align: center; padding-top: 14vh">
+                <input type="range">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-1 col-xs-3" style="padding-top: 3vh">
+                <h5>Contrast</h5>
+            </div>
+            <div class="col-xs-offset-1 col-xs-6" style="text-align: center; padding-top: 5vh">
+                <input type="range">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-1 col-xs-5" style="padding-top: 3vh;">
+                <h5>Screen Timeout</h5>
+            </div>
+            <div class="col-xs-5" style="text-align: left; padding-top: 4vh">
+                <div class="ui-field-contain">
+                    <select name="select-native-1" id="select-native-1">
+                        <option value="1min">1 min</option>
+                        <option value="5min">5 min</option>
+                        <option value="30min">30 min</option>
+                        <option value="60min">60 min</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-1 col-xs-2" style="padding-top: 3vh">
+                <h5>Date</h5>
+            </div>
+            <div class="col-xs-2" style="text-align: left; padding-top: 4vh">
+                <input style="width: 140%" type="number" id="day" value="21" min="1" max="31" />
+            </div>
+            <div class="col-xs-2" style="text-align: left; padding-top: 4vh">
+                <input style="width: 140%" type="number" id="month" value="5" min="1" max="12" />
+            </div>
+            <div class="col-xs-3" style="text-align: left; padding-top: 4vh">
+                <input style="width: 110%" type="number" id="year" value="2018" min="1980" max="2100" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-1 col-xs-2" style="padding-top: 3vh">
+                <h5>Time</h5>
+            </div>
+            <div class="col-xs-2" style="text-align: left; padding-top: 4vh">
+                <input style="width: 140%" id="hours" type="number" value="0" min="00" max="23" />
+            </div>
+            <div class="col-xs-1" style="text-align: left; padding-top: 2vh">
+                <h3><b>&nbsp:</b></h3>
+            </div>
+            <div class="col-xs-2" style="text-align: left; padding-top: 4vh">
+                <input style="width: 140%" id="minutes" type="number" value="59" min="00" max="59" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-1 col-xs-4" style="padding-top: 3vh;">
+                <h5>Language</h5>
+            </div>
+            <div class="col-xs-5" style="text-align: left; padding-top: 4vh">
+                <div class="ui-field-contain">
+                    <select name="select-native-1" id="select-native-1">
+                        <option value="pt">Portuguese</option>
+                        <option value="en">English</option>
+                        <option value="fr">French</option>
+                        <option value="ge">German</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

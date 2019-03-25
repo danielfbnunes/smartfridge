@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+
+<head>
+    <title>SmartFridge - Recipes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script src="js/recipes.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/recipes.css" />
+
+</head>
+
+
+<body>
+    <div id="header">
+        <table class="col-xs-12 col-sm-12">
+            <tr style="height: 10vh">
+                <td onclick="location.href= 'index.html'" class="col-xs-2" style="border-right: 2px black solid; text-align: center; background-color: #01303f; color: white; cursor:pointer">
+                    <i class="fas fa-home fa-lg"></i>
+                    <p style="font-size: 2.5vh;">
+                        <b>HOME</b>
+                    </p>
+                </td>
+                <td style="text-align: center;  background-color: #02577a; color: white">
+                    <p style="font-size: 3vh;">
+                        <b>RECIPES</b>
+                    </p>
+                </td>
+                <td style="text-align: center; background-color:#02577a; color: white; ; height: 3vh"><button title="Help" name="Help" type="button"  class="btn btn-primary btn-xs" style="margin-bottom: 0.80vh; background-color:#02577a; border-color:#02577a " data-toggle="modal" data-target="#helpModal"><i class="fa fa-question-circle" style="font-size: 3.5vh"></i></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- Table cotaining the header -->
+    <table id="myTable" class="table  table-striped  table-nowrap tableFixed">
+        <thead id="productsTableHeader">
+            <th style="text-align:center; width:35%"> Product Name</th>
+            <th style="text-align:center; width:37%"> Quantity</th>
+            <th style="text-align:center; width:28%"> Recipe Ingridient</th>
+        </thead>
+        <tbody id="TextBoxContainer" style="height:60vh; overflow-y:auto;  ">
+        </tbody>
+
+    </table>
+
+    <div style="text-align: center; position: fixed; height: 25vh; bottom: 0; width: 100%">
+        <div style="height: 2vh; text-align: center" class="row"></div>
+        <div style="height: 5vh; text-align: center" class="row">
+            <button onclick="checkedVals()" data-toggle="modal" data-target="#myModal" data-original-title="showRecipes" class="btn btn-primary btn">
+                <b>SHOW RECIPES</b>
+            </button>
+        </div>
+        <div style="height: 2vh; text-align: center" class="row"></div>
+        <div style="height: 5vh; text-align: center" class="row">
+            <button class="btn" onclick="location.href= 'recipes_favourites.html'" style="background-color:   #666666; color:white">
+                <b>
+                    <span class="glyphicon glyphicon-heart"></span>&nbspFAVOURITES
+                </b>
+            </button>
+        </div>
+        <div style="height: 2vh; text-align: center" class="row"></div>
+        <div div style="height: 5vh; text-align: center" class="row">
+            <button class="btn btn-primary btn" onclick="location.href= 'google.html'">
+                <b>MANUAL SEARCH</b>
+            </button>
+        </div>
+    </div>
+
+
+    <div id="myModal" class="modal fade" role="dialog" style="height:85vh">
+        <div class="modal-dialog">
+
+            <div class="modal-content" style="height:80vh">
+                <div style="text-align: center" class="modal-header">
+                    
+                    <div id="recipeTitle" class="col-xs-8 col-xs-offset-2" style="white-space: nowrap; overflow: hidden;  text-overflow: ellipsis;">
+                    </div>
+                    <div class="col-xs-2">
+                        <button class="btn btn-primary btn" onclick="goFullscreen()" data-toggle="modal" data-target="#fullScreenModal" id="buttonFullscreen">
+                            <span class="glyphicon glyphicon-fullscreen"></span>
+                        </button>
+
+                    </div>
+                </div>
+                <div class="modal-body" >
+                    <div style="overflow-y: scroll; word-wrap: break-word; height: 45vh; border:solid; border-color:#D0D0D0; padding:1vh; border-radius: 1vh">
+                        <div id="recipeText"></div>
+                    </div>
+
+                    <div class="w3-center">
+                        <div class="w3-section">
+                            <div style="height: 5vh">
+                                <div class="col-xs-5">
+                                    <button id="btnPrev" class="w3-button w3-light-grey" onclick="getRecipe('prev') ">❮ Prev</button>
+                                </div>
+                                <div class="col-xs-2" id="heart"></div>
+                                <div class="col-xs-5">
+                                    <button id="btnNext" class="w3-button w3-light-grey" onclick="getRecipe('next') ">Next ❯</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div style="padding-top: 1vh; height: 5vh;">
+                        <button id="btnShare" type="button" class="col-xs-offset-2 col-xs-3 btn btn-primary" data-toggle="modal" data-target="#myModal2">Share</button>
+                        <button type="button" onclick="buttonsEnabled()" class="col-xs-offset-2 col-xs-3 btn btn-danger" data-dismiss="modal">Exit</button>
+                    </div>
+                <br />
+                <br />
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="fullScreenModal" role="dialog" style="word-wrap: break-word;">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div style="height: 90vh;" class="modal-content">
+                <div id="fullScreenTitle" style="text-align: center" class="modal-header">
+                </div>
+                <div id=fullScreenText class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div style="height: 50vh;" class="modal-content">
+                <div style="text-align: center" class="modal-header">
+                    <h4 class="modal-title">Share Recipe</h4>
+                </div>
+                <div style="padding-top: 5vh" class="modal-body">
+                    <form>
+                        <div>
+                            <label class="col-xs-4" style="text-align: right;" for="mail">Mail: </label>
+                            <input class="col-xs-6" type="text" id="mail" />
+                        </div>
+                        <div style="padding-top: 10vh">
+                            <label class="col-xs-4" style="text-align: right;" for="phone">Phone: </label>
+                            <input class="col-xs-6" type="input" id="phone" />
+                        </div>
+                        <div style="padding-top: 10vh">
+                            <button id="btnSend" data-toggle="modal" data-target="#okModal" data-dismiss="modal" type="reset" class="col-xs-offset-2 col-xs-3 btn btn-primary"
+                                data-original-title="Send">Send</button>
+                            <button type="button" class="col-xs-offset-2 col-xs-3 btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="okModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div style="text-align: center" class="modal-header">
+                    <h4 class="modal-title">Recipe sent! </h4>
+                </div>
+                <div class="modal-body">
+                    <div style="text-align: center">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="helpModal" class="modal fade helpModal" role="dialog" style="height:80vh; ">
+        <div class="modal-dialog">
+
+            <div class="modal-content" style="height:75vh">
+
+                <div class="modal-body">
+                    <div style="overflow-y: scroll; word-wrap: break-word; height: 60vh; border:solid; border-color:#D0D0D0; padding:3vh; border-radius: 1vh; text-align: center">
+                        <center><span><h3><b>What can you do in this section?</b></h3></span></center>
+
+                        <br>
+                        <p style="color:#001f4d"><b>Search for recipes given an ingredient</b></p>
+                        <p style="font-size: 1.9vh; text-align: justify">You can select a few ingredients and search for recipes that use them. </p>
+
+                        <br>
+                        <p style="color:#001f4d"><b>Adding recipes to the favourites</b></p>
+                        <p style="font-size: 1.9vh ; text-align: justify">If you like a recipe, you can save it for later. Just click the heart-shaped button bellow the recipe.</p>
+                        
+                        <br>
+                        <p style="color:#001f4d"><b>Share the recipes you like</b></p>
+                        <p style="font-size: 1.9vh ; text-align: justify">If you like a recipe, you can share it with your friends by e-mail, or by cellphone.</p>
+                        
+                        <br>
+                        <p style="color:#001f4d"><b>View recipes in fullscreen</b></p>
+                        <p style="font-size: 1.9vh ; text-align: justify">You can read the recipes you like in fullscreen view.</p>
+
+                    </div>
+                </div>
+                <div style="padding-top: 1vh; height: 2vh;">
+                    <button type="button" onclick="buttonsEnabled()" class="col-xs-offset-5 col-xs-2 btn btn-danger" data-dismiss="modal">Exit</button>
+                </div>
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

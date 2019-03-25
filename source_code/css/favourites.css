@@ -1,0 +1,22 @@
+.table-nowrap {
+    table-layout: fixed;
+}
+
+.table-nowrap td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.tableFixed tbody {
+    display: block;
+    overflow-y: scroll;
+}
+
+.tableFixed thead,
+.tableFixed tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}

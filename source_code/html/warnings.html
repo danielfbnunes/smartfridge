@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SmartFridge - Products: Warnings</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <!--load buttons-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="js/warnings.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/warnings.css" />
+</head>
+
+<body onload="getTable()" style="margin:0">
+
+    <table class="col-xs-12 col-sm-12" id="headerTable">
+        <tr style="height: 10vh">
+            <td onclick="location.href= 'index.html'" class="col-xs-2" style="border-right: 2px black solid; text-align: center; background-color: #01303f; color: white; cursor:pointer">
+                <i class="fas fa-home fa-lg"></i>
+                <p style="font-size: 2.5vh;">
+                    <b>HOME</b>
+                </p>
+            </td>
+            <td style="text-align: center;  background-color: #02577a; color: white">
+                <p style="font-size: 3vh;">
+                    <b>WARNINGS</b>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Table cotaining the header -->
+    <table id="productsTable" class="table table-striped  table-nowrap tableFixed" style="margin-bottom: 0px">
+        <thead id="productsTableHeader">
+            <th style="text-align:center; width:65%"> Warning</th>
+            <th style="text-align:center; width:17.5%"> View</th>
+            <th style="text-align:center; width:17.5%"> Ack.</th>
+        </thead>
+        <tbody id="TextBoxContainer" style="height:75vh; overflow-y:auto;">
+        </tbody>
+    </table>
+
+    <!--Insert Manually-->
+    <div id="acknowledge" >
+        <div id="clearAll" class="form-group col-xs-10 col-xs-offset-1" style="margin-top: 2vh; margin-bottom: 2vh">
+            <button id="btnRemove" type="button" data-original-title="Remove all" data-toggle="modal" data-target="#confirmModal" style="height: 5vh" type="button" class="btn btn-primary col-xs-12" data-original-title="Remove all">
+                <i class="glyphicon glyphicon-remove-sign "></i>&nbsp; Acknowledge All&nbsp;
+            </button>
+        </div>
+
+
+    </div>
+
+
+
+    
+
+    <div class="modal fade" id="warningsModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="text-align: center;">
+                    <h4 class="modal-title" id="warningTitle"></h4>
+                </div>
+                <form>
+                    <div class="form-group col-xs-12">
+                            <textarea class="form-control" id="viewNoteText" style="margin-top:2vh" rows="3" readonly></textarea>
+                        </div>
+
+
+                    <div class="modal-footer">
+                        <div class="form-group col-xs-10 col-xs-offset-1">
+                            <button type="button" class="btn btn-primary col-xs-offset-2 col-xs-8" data-dismiss="modal" style="text-align:center">Exit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="confirmModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div style="text-align: center" class="modal-header">
+                    <h4 class="modal-title">Are you sure? </h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <button type="button" class="col-xs-offset-2 col-xs-3 btn btn-danger" onclick="remove()" data-dismiss="modal">Yes</button>
+                        <button type="button" class="col-xs-offset-2 col-xs-3 btn btn-primary" data-dismiss="modal">No</button>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

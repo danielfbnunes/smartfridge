@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>SmartFridge - Menu</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!--load buttons-->
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<script src="js/menu.js"></script>
+
+</head>
+
+
+<body style="min-height:100%;" onload=" resizeMenu();">
+
+	<div onclick="location.href= 'products.html'" id="prod" style="cursor:pointer; cursor:pointer ; float:right; background-color:#005c99; width:44%; margin-left:1%; margin-right:4%; margin-top:1%; margin-bottom:1% ; text-align: center;  color:white; border-radius: 2vh; border: solid; border-color: #00264d; border-style: ridge;">
+		<span onclick="location.href= 'products.html'" class="menuItem" id="prodText" style="vertical-align: middle; text-align:center ; font-size: 4.5vh;">Products</span>
+	</div>
+
+	<div onclick="location.href= 'groccery_list.html'" id="groc" style="cursor:pointer ; float:right; background-color:     #005c99; width:44%; margin-left:1%; margin-right:4%; margin-top:1%; margin-bottom:1% ; text-align: center;  color:white; border-radius: 2vh; border: solid; border-color: #00264d; border-style: ridge;">
+		<span onclick="location.href= 'groccery_list.html'" class="menuItem" id="grocText" style="vertical-align: middle; text-align:center ; font-size: 4.5vh;">Grocery List</span>
+	</div>
+
+
+
+	<div onclick="location.href= 'recipes.html'" id="rec" style="cursor:pointer ; float:right; background-color:     #005c99; width:44%; margin-left:1%; margin-right:4%; margin-top:1%; margin-bottom:1% ; text-align: center;  color:white; border-radius: 2vh; border: solid; border-color: #00264d; border-style: ridge;">
+		<span id="recText" style="vertical-align: middle; text-align:center ; font-size: 4.5vh;" onclick="location.href= 'recipes.html'">Recipes</span>
+
+	</div>
+	<div id="notes" onclick="location.href= 'notes.html'" style="cursor:pointer ; float:right; background-color:     #005c99; width:44%; margin-left:1%; margin-right:4%; margin-top:1%; margin-bottom:1% ; text-align: center;  color:white; border-radius: 2vh; border: solid; border-color: #00264d; border-style: ridge;">
+		<span id="notesText" style="vertical-align: middle; text-align:center ; font-size: 4.5vh; " onclick="location.href= 'notes.html'">Notes</span>
+
+	</div>
+
+	<div id="tv" style="cursor:pointer ; float:right; background-color:     #005c99; width:44%; margin-left:1%; margin-right:4%; margin-top:1%; margin-bottom:1% ; text-align: center;  color:white; border-radius: 2vh; border: solid; border-color: #00264d; border-style: ridge;" onclick="location.href= 'youtube.html'">
+		<span id="tvText" style="vertical-align: middle; text-align:center ; font-size: 4.5vh;" onclick="location.href= 'youtube.html'">Youtube</span>
+	</div>
+	
+	<div onclick="location.href= 'spotify.html'" id="spot" style="cursor:pointer ; float:right; background-color:     #005c99; width:44%; margin-left:1%; margin-right:4%; margin-top:1%; margin-bottom:1% ; text-align: center;  color:white; border-radius: 2vh; border: solid; border-color: #00264d; border-style: ridge;">
+		<span onclick="location.href= 'spotify.html'" id="spotText" style="vertical-align: middle; text-align:center ; font-size: 4.5vh;" onclick="location.href= 'spotify.html'">Spotify</span>
+	</div>
+	
+	<div id="sett" style="cursor:pointer ; float:right; background-color:     #005c99; width:44%; margin-left:1%; margin-right:4%; margin-top:1%; margin-bottom:1% ; text-align: center;  color:white; border-radius: 2vh; border: solid; border-color: #00264d; border-style: ridge;" onclick="location.href= 'settings.html'">
+		<span id="settText" style="vertical-align: middle; text-align:center ; font-size: 4.5vh;" onclick="location.href= 'settings.html'">Settings</span>
+	</div>
+	
+	<div id="warn" style="cursor:pointer ; float:right; background-color:     #005c99; width:44%; margin-left:1%; margin-right:4%; margin-top:1%; margin-bottom:1% ; text-align: center;  color:white; border-radius: 2vh; border: solid; border-color: #00264d; border-style: ridge;" onclick="location.href= 'warnings.html'">
+		<span id="warnText" style="vertical-align: middle; text-align:center ; font-size: 4.5vh;" onclick="location.href= 'warnings.html'">Warnings</span>
+	</div>
+
+</body>
+
+</html>

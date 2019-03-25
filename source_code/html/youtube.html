@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SmartFridge - YouTube</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <!--load buttons-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="js/youtube.js"></script>
+    <link rel="stylesheet" type="text/css" />
+</head>
+
+<body style="height: 100%">
+    <div id="header" ;>
+        <table style="width: 100%">
+            <tr style="height: 10vh">
+                <td onclick="location.href= 'index.html'" class="col-xs-2" style="border-right: 2px black solid; text-align: center; background-color: #01303f; color: white;  cursor:pointer">
+                    <i class="fas fa-home fa-lg"></i>
+                    <p style="font-size: 2.5vh;">
+                        <b>HOME</b>
+                    </p>
+                </td>
+                <td style="text-align: center; background-color:  #02577a; color: white">
+                    <p style="font-size: 3vh;">
+                        <b>YOUTUBE</b>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <iframe id="youtubeIframe" class="col-xs-12 " style="height:40vh; margin-top:20vh; margin-bottom:5vh" src="https://www.youtube.com/embed/XFkzRNyygfk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    
+    <div class="w3-center">
+        <div class="w3-section">
+            <button name="youtubeIframe" id="btnPrev" class="w3-button w3-light-grey" onclick="getPrev(this.name)">❮ Prev</button>
+            <button name="youtubeIframe" id="btnNext" class="w3-button w3-light-grey" onclick="getNext(this.name)">Next ❯</button>
+        </div>
+    </div>
+</body>
+
+</html>

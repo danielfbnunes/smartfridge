@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SmartFridge - Notes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+        crossorigin="anonymous">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"
+    />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <!--load buttons-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="js/notes.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/notes.css" />
+</head>
+
+<body style="margin:0">
+
+    <table class="col-xs-12 col-sm-12" id="headerTable">
+        <tr style="height: 10vh">
+            <td onclick="location.href= 'index.html'" class="col-xs-2"  style="cursor:pointer; border-right: 2px black solid; text-align: center; background-color: #01303f; color: white">
+                <i class="fas fa-home fa-lg"></i>
+                <p style="font-size: 2.5vh;">
+                    <b>HOME</b>
+                </p>
+            </td>
+            <td style="text-align: center;  background-color: #02577a; color: white">
+                <p style="font-size: 3vh;">
+                    <b>NOTES</b>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Table cotaining the header -->
+    <table id="productsTable" class="table table-striped  table-nowrap tableFixed" style="margin-bottom: 0px">
+        <thead id="productsTableHeader">
+            <th style="text-align:center; width:50%"> Note</th>
+            <th style="text-align:center; width:32.5%"> View / Edit</th>
+            <th style="text-align:center; width:17.5%"> Rem.</th>
+        </thead>
+        <tbody id="TextBoxContainer" style="height:65vh; overflow-y:auto;" onmousehover="console.log(this)">
+        </tbody>
+    </table>
+
+    <!--Insert Manually-->
+    <div id="fff" style="height:15vh">
+        <div id="insertManuallyButton" class="col-xs-12" style="padding-bottom: 1vh; padding-top: 2vh;  text-align: right; ">
+            <button class="w3-button w3-large w3-circle" id="btnAdd" data-toggle="modal" data-target="#addModal" style="background-color:   #666666; color:white">+</button>
+        </div>
+
+        <div id="clearAll" class="form-group col-xs-10 col-xs-offset-1">
+            <button id="btnRemove" type="button" class="btn btn-danger col-xs-12" data-original-title="Remove all" data-toggle="modal" data-target="#confirmModal">
+                <i class="glyphicon glyphicon-remove-sign "></i>&nbsp; Clear All&nbsp;
+            </button>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="text-align: center;">
+                    <h4 class="modal-title">View Note</h4>
+                </div>
+                <form>
+                    <div class="modal-body row ">
+
+                        <div class="form-group col-xs-12">
+                            <label for="note_name">Note's Name:</label>
+                            <input type="text" class="form-control" id="note_name">
+                        </div>
+
+                        <div class="form-group col-xs-12">
+                            <label for="note_text">Text:</label>
+                            <textarea class="form-control" id="note_text" rows="3"></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <div class="form-group col-xs-6">
+                            <button type="button" class="btn btn-danger col-xs-offset-2 col-xs-8" data-dismiss="modal" style="text-align:center">Exit</button>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <button id="btnChange" data-dismiss="modal" type="reset" class="btn btn-primary col-xs-offset-2 col-xs-8" style="text-align:center"
+                                data-original-title="Confirm">Change</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div style="text-align: center" class="modal-header">
+                    <h4 class="modal-title">Are you sure? </h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <button type="button" class="col-xs-offset-2 col-xs-3 btn btn-danger" onclick="removeAll()" data-dismiss="modal">Yes</button>
+                        <button type="button" class="col-xs-offset-2 col-xs-3 btn btn-primary" data-dismiss="modal">No</button>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="addModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="text-align: center;">
+                    <h4 class="modal-title">Add Note</h4>
+                </div>
+                <form>
+                    <div class="modal-body row ">
+
+                        <div class="form-group col-xs-12">
+                            <label for="nName">Note's Name:</label>
+                            <input type="text" class="form-control" id="nName" value="">
+                        </div>
+
+                        <div class="form-group col-xs-12">
+                            <label for="nText">Text:</label>
+                            <textarea class="form-control" id="nText" rows="3" value=""></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <div class="form-group col-xs-6">
+                            <button type="button" class="btn btn-danger col-xs-offset-2 col-xs-8" data-dismiss="modal" style="text-align:center">Cancel</button>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <button id="btnConfirm" data-dismiss="modal" type="reset" class="btn btn-primary col-xs-offset-2 col-xs-8 confirm" style="text-align:center"
+                                data-original-title="Confirm">Confirm</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

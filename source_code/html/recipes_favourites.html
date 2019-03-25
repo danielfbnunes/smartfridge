@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+
+<head>
+    <title>SmartFridge - Recipes Favourites</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+        crossorigin="anonymous">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"
+    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script src="js/recipes_favourites.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/favourites.css" />
+
+</head>
+
+<body>
+    <div id="header" ;>
+        <table style="width: 100%">
+            <tr style="height: 10vh">
+                <td onclick="location.href= 'index.html'" class="col-xs-2" style="border-right: 2px black solid; text-align: center; background-color: #01303f; color: white; cursor:pointer">
+                    <i class="fas fa-home fa-lg"></i>
+                    <p style="font-size: 2.5vh; cursor:pointer">
+                        <b>HOME</b>
+                    </p>
+                </td>
+                <td style="text-align: center;  background-color: #02577a; color: white; ">
+                    <p style="font-size: 3vh;">
+                        <b>RECIPES</b>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center; background-color:  #037cb0; color: white; cursor:pointer">
+                    <i onclick="location.href = 'recipes.html', writeFile()" class="fas fa-arrow-alt-circle-left fa-2x" style="cursor:pointer"></i>
+                </td>
+                <td style="text-align: center; background-color:  #037cb0; color: white">
+                    <p style="font-size: 3vh;">
+                        <b>
+                            <span class="glyphicon glyphicon-heart"></span>&nbspFAVOURITES</b>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <!-- Table cotaining the header -->
+        <table id="productsTable" class="table  table-striped  table-nowrap tableFixed ">
+            <thead id="productsTableHeader">
+                <th style="text-align:center; width:37.5%"> Recipe Name</th>
+                <th style="text-align:center; width:37.5%"> View</th>
+                <th style="text-align:center; width:25%"> Remove</th>
+            </thead>
+            <tbody id="TextBoxContainer" style="height:70vh; overflow-y:auto;  ">
+            </tbody>
+
+        </table>
+    </div>
+
+    <div id="myModal" class="modal fade" role="dialog" style="height: 90vh">
+        <div class="modal-dialog">
+
+            <div style="height: 80vh;" class="modal-content">
+                <div style="text-align: center" class="modal-header">
+                     <div id="recipeTitle" class="col-xs-8 col-xs-offset-2">
+                    </div>
+                    <div class="col-xs-2">
+                        <button class="btn btn-primary btn" onclick="goFullscreen()" data-toggle="modal" data-target="#fullScreenModal" id="buttonFullscreen">
+                            <span class="glyphicon glyphicon-fullscreen"></span>
+                        </button>
+
+                    </div>
+                   
+                </div>
+                <div class="modal-body">
+                    <div style="overflow-y: scroll; word-wrap: break-word; height: 50vh; border:solid; border-color:#D0D0D0; padding:1vh; border-radius: 1vh">
+                        <div id=recipeText class="w3-content">
+                        </div>
+                    </div>
+
+                    <div style="padding-top: 5vh; height: 5vh;">
+                        <button id="btnShare" type="button" class="col-xs-offset-2 col-xs-3 btn btn-primary" data-toggle="modal" data-target="#myModal2">Share</button>
+                        <button type="button" class="col-xs-offset-2 col-xs-3 btn btn-danger" data-dismiss="modal">Exit</button>
+                    </div>
+                </div>
+                <br />
+                <br />
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="fullScreenModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div style="height: 90vh;" class="modal-content">
+                <div id="fullScreenTitle" style="text-align: center" class="modal-header">
+                </div>
+                <div id=fullScreenText class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div style="height: 50vh;" class="modal-content">
+                <div style="text-align: center" class="modal-header">
+                    <h4 class="modal-title">Share Recipe</h4>
+                </div>
+                <div style="padding-top: 5vh" class="modal-body">
+                    <form>
+                        <div>
+                            <label class="col-xs-4" style="text-align: right;" for="mail">Mail: </label>
+                            <input class="col-xs-6" type="text" id="mail" />
+                        </div>
+                        <div style="padding-top: 10vh">
+                            <label class="col-xs-4" style="text-align: right;" for="phone">Phone: </label>
+                            <input class="col-xs-6" type="input" id="phone" />
+                        </div>
+                        <div style="padding-top: 10vh">
+                            <button id="btnSend" data-toggle="modal" data-target="#okModal" data-dismiss="modal" type="reset" class="col-xs-offset-2 col-xs-3 btn btn-primary"
+                                data-original-title="Send">Send</button>
+                            <button type="button" class="col-xs-offset-2 col-xs-3 btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="okModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div style="text-align: center" class="modal-header">
+                    <h4 class="modal-title">Recipe sent! </h4>
+                </div>
+                <div class="modal-body">
+                    <div style="text-align: center">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

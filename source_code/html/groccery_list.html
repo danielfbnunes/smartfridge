@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+
+<head>
+    <title>SmartFridge - Grocery List</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--load buttons-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <script src="js/groccery_list.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/groccery_list.css" />
+
+</head>
+
+<body style="height: 100%">
+    <div id="header" ;>
+        <table style="width: 100%">
+            <tr style="height: 10vh">
+                <td onclick="location.href= 'index.html'" class="col-xs-2" style="border-right: 2px black solid; text-align: center; background-color: #01303f; color: white; cursor:pointer">
+                    <i class="fas fa-home fa-lg"></i>
+                    <p style="font-size: 2.5vh;">
+                        <b>HOME</b>
+                    </p>
+                </td>
+                <td style="text-align: center; background-color:  #02577a; color: white; height: 3vh">
+                    <p style="font-size: 3vh; line-height: 3vh">
+                        <b>GROCERY LIST</b>
+                    </p>
+                </td>
+                <td style="text-align: center; background-color:#02577a; color: white; ; height: 3vh"><button title="Help" name="Help" type="button"  class="btn btn-primary btn-xs" style="margin-bottom: 0.80vh; background-color:#02577a; border-color:#02577a " data-toggle="modal" data-target="#helpModal"><i class="fa fa-question-circle" style="font-size: 3.5vh"></i></button></td>
+            </tr>
+        </table>
+    </div>
+
+
+    <table id="productsTable" class="table table-striped  table-nowrap tableFixed" style="margin-bottom: 0px">
+        <thead id="productsTableHeader">
+            <th style="text-align:center; width:30%"> Product</th>
+            <th style="text-align:center; width:54%"> Quantity</th>
+            <th style="text-align:center; width:16%"> Rem.</th>
+        </thead>
+        <tbody id="TextBoxContainer" style="height:58vh ; overflow-y:auto;  ">
+        </tbody>
+    </table>
+
+    <!--Insert Manually-->
+    <div id="insertManuallyDiv">
+        <div id="insertManuallyButton" class="col-xs-12" style="padding-bottom: 1vh; padding-top: 2vh;  text-align: right">
+            <button class="w3-button w3-large w3-circle" id="btnAdd" data-toggle="tooltip" data-original-title="Add more" style="background-color: #666666; color:white">+</button>
+        </div>
+
+        <div id="insertWatchList" class="col-xs-12" style="padding-bottom: 1vh; padding-top: 2vh;  text-align: center">
+            <button class="btn " id="btnAddWL" data-toggle="modal" data-target="#myModal2" data-original-title="Add watchlist" style="background-color:   #666666; color:white">Monitor Product</button>
+        </div>
+
+        <div id="cancelButton" class="form-group col-xs-6">
+            <button id="btnSend" type="button" class="btn btn-primary col-xs-offset-1 col-xs-10" data-original-title="Send" data-toggle="modal" data-target="#myModal">
+                <i class="glyphicon glyphicon-send"></i>&nbsp; Send&nbsp;</button>
+        </div>
+        <div id="confirmButton" class="form-group col-xs-6">
+            <button id="btnRemove" type="button" class="btn btn-danger col-xs-offset-1 col-xs-10" data-original-title="Remove all" data-toggle="modal" data-target="#confirmModal">
+                <i class="glyphicon glyphicon-remove-sign "></i>&nbsp; Clear All&nbsp;</button>
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div style="text-align: center" class="modal-header">
+                    <h4 class="modal-title">Send grocery list</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label class="col-xs-4" style="text-align: right;" for="mail">Mail: </label>
+                        <input class="col-xs-6" type="text" id="mail" />
+                        <br>
+                        <br>
+                        <label class="col-xs-4" style="text-align: right;" for="phone">Phone: </label>
+                        <input class="col-xs-6" type="input" id="phone" />
+                        <br />
+                        <br />
+                        <br />
+                        <div>
+                            <button id="btnSend" data-toggle="modal" data-target="#okModal" data-dismiss="modal" type="reset" class="col-xs-offset-2 col-xs-3 btn btn-primary" data-original-title="Send">Send</button>
+                            <button type="button" class="col-xs-offset-2 col-xs-3 btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="removeModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div style="text-align: center" class="modal-header">
+                    <h4 class="modal-title">Also remove from watchlist? </h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <button type="button" class="col-xs-offset-2 col-xs-3 btn btn-danger" onclick="removeWish(true)" data-dismiss="modal">Yes</button>
+                        <button type="button" class="col-xs-offset-2 col-xs-3 btn btn-primary" onclick="removeWish(false)" data-dismiss="modal">No</button>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="confirmModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div style="text-align: center" class="modal-header">
+                    <h4 class="modal-title">Are you sure? </h4>
+                </div>
+                <div class="modal-body">
+                    <div style="text-align: justify">
+                        <p>This will delete all the items from the "monitored list". You will not monitor them from now on.</p>
+                        <br>
+                        <button type="button" class="col-xs-offset-2 col-xs-3 btn btn-danger" onclick="removeAll()" data-dismiss="modal">Yes</button>
+                        <button type="button" class="col-xs-offset-2 col-xs-3 btn btn-primary" data-dismiss="modal">No</button>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="okModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div style="text-align: center" class="modal-header">
+                    <h4 class="modal-title">Grocery list sent! </h4>
+                </div>
+                <div class="modal-body">
+                    <div style="text-align: center">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="text-align: center;">
+                    <h4 class="modal-title">Monitor Prod.</h4>
+                </div>
+                <form>
+                    <div class="modal-body row ">
+
+                        <div class="form-group col-xs-12">
+                            <label for="product_name">Product's Name:</label>
+                            <input type="text" class="form-control" id="product_name">
+                        </div>
+
+                        <div class="form-group col-xs-12">
+                            <label for="quantity">Minimum quantity:</label>
+                            <input type="text" class="form-control" id="min_quantity">
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <div class="form-group col-xs-6">
+                            <button type="button" class="btn btn-danger col-xs-offset-2 col-xs-8" data-dismiss="modal" style="text-align:center">Cancel</button>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <button id="btnConfirm" type="reset" class="btn btn-primary col-xs-offset-2 col-xs-8" style="text-align:center" data-original-title="Confirm" onclick="checkProd()">Confirm</button>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="errorModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div style="text-align: center" class="modal-header">
+                    <h4 class="modal-title">Product not found</h4>
+                </div>
+                <div class="modal-body">
+                    <div style="text-align: center">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-dismiss="modal">Ok</button>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="helpModal" class="modal fade helpModal" role="dialog" style="height:80vh; ">
+        <div class="modal-dialog">
+
+            <div class="modal-content" style="height:75vh">
+
+                <div class="modal-body">
+                    <div style="overflow-y: scroll; word-wrap: break-word; height: 60vh; border:solid; border-color:#D0D0D0; padding:3vh; border-radius: 1vh; text-align: center">
+                        <center><span><h3><b>What can you do in this section?</b></h3></span></center>
+
+                        <br>
+                        <p style="color:#001f4d"><b>Monitor new products</b></p>
+                        <p style="font-size: 1.9vh; text-align: justify">Choose each products you wish to monitor. When the quantity of the 'monitored products' is bellow what you defined, you will be alerted!</p>
+
+                        <br>
+                        <p style="color:#001f4d"><b>Add items to your grocery list</b></p>
+                        <p style="font-size: 1.9vh ; text-align: justify">By clicking in the button '+' you can easily add some items to your grocery list. This ones will not be saved after you leave this section.</p>
+                        
+                        <br>
+                        <p style="color:#001f4d"><b>Send grocery list</b></p>
+                        <p style="font-size: 1.9vh ; text-align: justify">You can send your grocery list to your cellphone or to your e-mail.</p>
+
+                    </div>
+                </div>
+                <div style="padding-top: 1vh; height: 2vh;">
+                    <button type="button" onclick="buttonsEnabled()" class="col-xs-offset-5 col-xs-2 btn btn-danger" data-dismiss="modal">Exit</button>
+                </div>
+                <br />
+                <br />
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html> 
